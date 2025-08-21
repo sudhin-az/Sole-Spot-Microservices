@@ -44,7 +44,7 @@ func (p *ProductServer) AddProducts(ctx context.Context, req *pb.AddProductReque
 }
 
 func (p *ProductServer) ListProducts(ctx context.Context, req *pb.ListProductRequest) (*pb.ListProductResponse, error) {
-	products, err := p.ProductUseCase.ListProducts()
+	products, err := p.ProductUseCase.ListProducts(int(req.UserID))
 	if err != nil {
 		return &pb.ListProductResponse{}, err
 	}

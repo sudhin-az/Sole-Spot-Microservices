@@ -34,9 +34,9 @@ func (pu *ProductUseCase) AddProducts(product models.Product) (domain.Product, e
 	return productResponse, nil
 }
 
-func (pu *ProductUseCase) ListProducts() ([]models.ProductBrief, error) {
+func (pu *ProductUseCase) ListProducts(userId int) ([]models.ProductBrief, error) {
 
-	products, err := pu.ProductRepository.ListProducts()
+	products, err := pu.ProductRepository.ListProducts(userId)
 	if err != nil {
 		return []models.ProductBrief{}, err
 	}

@@ -54,9 +54,9 @@ func (pr *ProductRepository) AddProducts(product models.Product) (domain.Product
 	return productResponses, nil
 }
 
-func (pr *ProductRepository) ListProducts() ([]models.ProductBrief, error) {
+func (pr *ProductRepository) ListProducts(userID int) ([]models.ProductBrief, error) {
 	var product []models.ProductBrief
-	err := pr.DB.Raw("SELECT id, name, description, category_id, size, stock, price, product_status FROM products").Scan(&product).Error
+	err := pr.DB.Raw("SELECT id, name, description, category_id, size, stock, price, product_status FROM products WHERE user_id = ?").Scan(&product).Error
 	if err != nil {
 		return nil, err
 	}

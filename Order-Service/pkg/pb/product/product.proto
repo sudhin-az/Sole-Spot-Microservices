@@ -44,8 +44,8 @@ message AddProductResponse{
 }
 
 message ListProductRequest{
-    int64 page=1;
-    int64 count=2;
+    int64 userID = 1;
+    
 }
 
 message ProductDetails{

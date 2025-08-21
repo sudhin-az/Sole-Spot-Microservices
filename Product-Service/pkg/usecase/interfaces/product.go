@@ -7,7 +7,7 @@ import (
 
 type ProductUseCase interface {
 	AddProducts(product models.Product) (domain.Product, error)
-	ListProducts() ([]models.ProductBrief, error)
+	ListProducts(userId int) ([]models.ProductBrief, error)
 	ProductAlreadyExist(Name string) bool
 	StockInvalid(Name string) bool
 	DeleteProducts(id int) error
