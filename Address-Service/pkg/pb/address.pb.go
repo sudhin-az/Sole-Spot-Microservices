@@ -364,13 +364,14 @@ func (x *GetAddressResponse) GetAddressDetails() *AddressDetails {
 
 type UpdateAddressRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        uint64                 `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	Street        string                 `protobuf:"bytes,2,opt,name=street,proto3" json:"street,omitempty"`
-	City          string                 `protobuf:"bytes,3,opt,name=city,proto3" json:"city,omitempty"`
-	State         string                 `protobuf:"bytes,4,opt,name=state,proto3" json:"state,omitempty"`
-	District      string                 `protobuf:"bytes,5,opt,name=district,proto3" json:"district,omitempty"`
-	ZipCode       string                 `protobuf:"bytes,6,opt,name=zip_code,json=zipCode,proto3" json:"zip_code,omitempty"`
-	Country       string                 `protobuf:"bytes,7,opt,name=country,proto3" json:"country,omitempty"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	UserId        uint64                 `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Street        string                 `protobuf:"bytes,3,opt,name=street,proto3" json:"street,omitempty"`
+	City          string                 `protobuf:"bytes,4,opt,name=city,proto3" json:"city,omitempty"`
+	State         string                 `protobuf:"bytes,5,opt,name=state,proto3" json:"state,omitempty"`
+	District      string                 `protobuf:"bytes,6,opt,name=district,proto3" json:"district,omitempty"`
+	ZipCode       string                 `protobuf:"bytes,7,opt,name=zip_code,json=zipCode,proto3" json:"zip_code,omitempty"`
+	Country       string                 `protobuf:"bytes,8,opt,name=country,proto3" json:"country,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -403,6 +404,13 @@ func (x *UpdateAddressRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use UpdateAddressRequest.ProtoReflect.Descriptor instead.
 func (*UpdateAddressRequest) Descriptor() ([]byte, []int) {
 	return file_pkg_pb_address_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *UpdateAddressRequest) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
 }
 
 func (x *UpdateAddressRequest) GetUserId() uint64 {
@@ -623,27 +631,27 @@ const file_pkg_pb_address_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\"m\n" +
 	"\x12GetAddressResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\x03R\x06status\x12?\n" +
-	"\x0eaddressDetails\x18\x02 \x01(\v2\x17.address.AddressDetailsR\x0eaddressDetails\"\xc2\x01\n" +
-	"\x14UpdateAddressRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x04R\x06userId\x12\x16\n" +
-	"\x06street\x18\x02 \x01(\tR\x06street\x12\x12\n" +
-	"\x04city\x18\x03 \x01(\tR\x04city\x12\x14\n" +
-	"\x05state\x18\x04 \x01(\tR\x05state\x12\x1a\n" +
-	"\bdistrict\x18\x05 \x01(\tR\bdistrict\x12\x19\n" +
-	"\bzip_code\x18\x06 \x01(\tR\azipCode\x12\x18\n" +
-	"\acountry\x18\a \x01(\tR\acountry\"p\n" +
+	"\x0eaddressDetails\x18\x02 \x01(\v2\x17.address.AddressDetailsR\x0eaddressDetails\"\xd2\x01\n" +
+	"\x14UpdateAddressRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\x04R\x06userId\x12\x16\n" +
+	"\x06street\x18\x03 \x01(\tR\x06street\x12\x12\n" +
+	"\x04city\x18\x04 \x01(\tR\x04city\x12\x14\n" +
+	"\x05state\x18\x05 \x01(\tR\x05state\x12\x1a\n" +
+	"\bdistrict\x18\x06 \x01(\tR\bdistrict\x12\x19\n" +
+	"\bzip_code\x18\a \x01(\tR\azipCode\x12\x18\n" +
+	"\acountry\x18\b \x01(\tR\acountry\"p\n" +
 	"\x15UpdateAddressResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\x03R\x06status\x12?\n" +
 	"\x0eaddressDetails\x18\x02 \x01(\v2\x17.address.AddressDetailsR\x0eaddressDetails\"&\n" +
 	"\x14DeleteAddressRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\"/\n" +
 	"\x15DeleteAddressResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\x03R\x06status2\xbf\x02\n" +
+	"\x06status\x18\x01 \x01(\x03R\x06status2\xc3\x02\n" +
 	"\aAddress\x12G\n" +
 	"\n" +
-	"AddAddress\x12\x1a.address.AddAddressRequest\x1a\x1b.address.AddAddressResponse\"\x00\x12G\n" +
-	"\n" +
-	"GetAddress\x12\x1a.address.GetAddressRequest\x1a\x1b.address.GetAddressResponse\"\x00\x12P\n" +
+	"AddAddress\x12\x1a.address.AddAddressRequest\x1a\x1b.address.AddAddressResponse\"\x00\x12K\n" +
+	"\x0eGetAddressByID\x12\x1a.address.GetAddressRequest\x1a\x1b.address.GetAddressResponse\"\x00\x12P\n" +
 	"\rUpdateAddress\x12\x1d.address.UpdateAddressRequest\x1a\x1e.address.UpdateAddressResponse\"\x00\x12P\n" +
 	"\rDeleteAddress\x12\x1d.address.DeleteAddressRequest\x1a\x1e.address.DeleteAddressResponse\"\x00B\n" +
 	"Z\b./pkg/pbb\x06proto3"
@@ -677,11 +685,11 @@ var file_pkg_pb_address_proto_depIdxs = []int32{
 	0, // 1: address.GetAddressResponse.addressDetails:type_name -> address.AddressDetails
 	0, // 2: address.UpdateAddressResponse.addressDetails:type_name -> address.AddressDetails
 	1, // 3: address.Address.AddAddress:input_type -> address.AddAddressRequest
-	3, // 4: address.Address.GetAddress:input_type -> address.GetAddressRequest
+	3, // 4: address.Address.GetAddressByID:input_type -> address.GetAddressRequest
 	5, // 5: address.Address.UpdateAddress:input_type -> address.UpdateAddressRequest
 	7, // 6: address.Address.DeleteAddress:input_type -> address.DeleteAddressRequest
 	2, // 7: address.Address.AddAddress:output_type -> address.AddAddressResponse
-	4, // 8: address.Address.GetAddress:output_type -> address.GetAddressResponse
+	4, // 8: address.Address.GetAddressByID:output_type -> address.GetAddressResponse
 	6, // 9: address.Address.UpdateAddress:output_type -> address.UpdateAddressResponse
 	8, // 10: address.Address.DeleteAddress:output_type -> address.DeleteAddressResponse
 	7, // [7:11] is the sub-list for method output_type

@@ -303,7 +303,6 @@ func (x *AddProductResponse) GetError() string {
 
 type ListProductRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserID        int64                  `protobuf:"varint,1,opt,name=userID,proto3" json:"userID,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -336,13 +335,6 @@ func (x *ListProductRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use ListProductRequest.ProtoReflect.Descriptor instead.
 func (*ListProductRequest) Descriptor() ([]byte, []int) {
 	return file_pkg_pb_product_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *ListProductRequest) GetUserID() int64 {
-	if x != nil {
-		return x.UserID
-	}
-	return 0
 }
 
 type ProductDetails struct {
@@ -1086,9 +1078,8 @@ const file_pkg_pb_product_proto_rawDesc = "" +
 	"\x04Size\x18\x05 \x01(\x03R\x04Size\x12\x14\n" +
 	"\x05Stock\x18\x06 \x01(\x03R\x05Stock\x12\x14\n" +
 	"\x05Price\x18\a \x01(\x02R\x05Price\x12\x14\n" +
-	"\x05Error\x18\b \x01(\tR\x05Error\",\n" +
-	"\x12ListProductRequest\x12\x16\n" +
-	"\x06userID\x18\x01 \x01(\x03R\x06userID\"\xf2\x01\n" +
+	"\x05Error\x18\b \x01(\tR\x05Error\"\x14\n" +
+	"\x12ListProductRequest\"\xf2\x01\n" +
 	"\x0eProductDetails\x12\x0e\n" +
 	"\x02ID\x18\x01 \x01(\x03R\x02ID\x12\x12\n" +
 	"\x04Name\x18\x02 \x01(\tR\x04Name\x12 \n" +

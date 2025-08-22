@@ -43,9 +43,7 @@ message AddProductResponse{
     string Error=8;
 }
 
-message ListProductRequest{
-    int64 userID = 1;
-}
+message ListProductRequest{}
 
 message ProductDetails{
    int64 ID=1;

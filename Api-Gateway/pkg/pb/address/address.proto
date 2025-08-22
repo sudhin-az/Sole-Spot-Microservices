@@ -6,7 +6,7 @@ option go_package = "./pkg/pb";
 
 service Address {
     rpc AddAddress (AddAddressRequest) returns (AddAddressResponse) {};
-    rpc GetAddress (GetAddressRequest) returns (GetAddressResponse) {};
+    rpc GetAddressByID (GetAddressRequest) returns (GetAddressResponse) {};
     rpc UpdateAddress (UpdateAddressRequest) returns (UpdateAddressResponse) {};
     rpc DeleteAddress (DeleteAddressRequest) returns (DeleteAddressResponse) {};
 }
@@ -48,13 +48,14 @@ message GetAddressResponse {
 }
 
 message UpdateAddressRequest {
-    uint64 user_id = 1;
-    string street = 2;
-    string city = 3;
-    string state = 4;
-    string district = 5;
-    string zip_code = 6;
-    string country = 7;
+    uint64 id = 1;
+    uint64 user_id = 2;
+    string street = 3;
+    string city = 4;
+    string state = 5;
+    string district = 6;
+    string zip_code = 7;
+    string country = 8;
 }
 
 message UpdateAddressResponse {

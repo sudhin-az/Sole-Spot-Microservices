@@ -19,10 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Address_AddAddress_FullMethodName    = "/address.Address/AddAddress"
-	Address_GetAddress_FullMethodName    = "/address.Address/GetAddress"
-	Address_UpdateAddress_FullMethodName = "/address.Address/UpdateAddress"
-	Address_DeleteAddress_FullMethodName = "/address.Address/DeleteAddress"
+	Address_AddAddress_FullMethodName     = "/address.Address/AddAddress"
+	Address_GetAddressByID_FullMethodName = "/address.Address/GetAddressByID"
+	Address_UpdateAddress_FullMethodName  = "/address.Address/UpdateAddress"
+	Address_DeleteAddress_FullMethodName  = "/address.Address/DeleteAddress"
 )
 
 // AddressClient is the client API for Address service.
@@ -30,7 +30,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AddressClient interface {
 	AddAddress(ctx context.Context, in *AddAddressRequest, opts ...grpc.CallOption) (*AddAddressResponse, error)
-	GetAddress(ctx context.Context, in *GetAddressRequest, opts ...grpc.CallOption) (*GetAddressResponse, error)
+	GetAddressByID(ctx context.Context, in *GetAddressRequest, opts ...grpc.CallOption) (*GetAddressResponse, error)
 	UpdateAddress(ctx context.Context, in *UpdateAddressRequest, opts ...grpc.CallOption) (*UpdateAddressResponse, error)
 	DeleteAddress(ctx context.Context, in *DeleteAddressRequest, opts ...grpc.CallOption) (*DeleteAddressResponse, error)
 }
@@ -53,10 +53,10 @@ func (c *addressClient) AddAddress(ctx context.Context, in *AddAddressRequest, o
 	return out, nil
 }
 
-func (c *addressClient) GetAddress(ctx context.Context, in *GetAddressRequest, opts ...grpc.CallOption) (*GetAddressResponse, error) {
+func (c *addressClient) GetAddressByID(ctx context.Context, in *GetAddressRequest, opts ...grpc.CallOption) (*GetAddressResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetAddressResponse)
-	err := c.cc.Invoke(ctx, Address_GetAddress_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, Address_GetAddressByID_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -88,7 +88,7 @@ func (c *addressClient) DeleteAddress(ctx context.Context, in *DeleteAddressRequ
 // for forward compatibility.
 type AddressServer interface {
 	AddAddress(context.Context, *AddAddressRequest) (*AddAddressResponse, error)
-	GetAddress(context.Context, *GetAddressRequest) (*GetAddressResponse, error)
+	GetAddressByID(context.Context, *GetAddressRequest) (*GetAddressResponse, error)
 	UpdateAddress(context.Context, *UpdateAddressRequest) (*UpdateAddressResponse, error)
 	DeleteAddress(context.Context, *DeleteAddressRequest) (*DeleteAddressResponse, error)
 	mustEmbedUnimplementedAddressServer()
@@ -104,8 +104,8 @@ type UnimplementedAddressServer struct{}
 func (UnimplementedAddressServer) AddAddress(context.Context, *AddAddressRequest) (*AddAddressResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddAddress not implemented")
 }
-func (UnimplementedAddressServer) GetAddress(context.Context, *GetAddressRequest) (*GetAddressResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAddress not implemented")
+func (UnimplementedAddressServer) GetAddressByID(context.Context, *GetAddressRequest) (*GetAddressResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAddressByID not implemented")
 }
 func (UnimplementedAddressServer) UpdateAddress(context.Context, *UpdateAddressRequest) (*UpdateAddressResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateAddress not implemented")
@@ -152,20 +152,20 @@ func _Address_AddAddress_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Address_GetAddress_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Address_GetAddressByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetAddressRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AddressServer).GetAddress(ctx, in)
+		return srv.(AddressServer).GetAddressByID(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Address_GetAddress_FullMethodName,
+		FullMethod: Address_GetAddressByID_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AddressServer).GetAddress(ctx, req.(*GetAddressRequest))
+		return srv.(AddressServer).GetAddressByID(ctx, req.(*GetAddressRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -218,8 +218,8 @@ var Address_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Address_AddAddress_Handler,
 		},
 		{
-			MethodName: "GetAddress",
-			Handler:    _Address_GetAddress_Handler,
+			MethodName: "GetAddressByID",
+			Handler:    _Address_GetAddressByID_Handler,
 		},
 		{
 			MethodName: "UpdateAddress",
